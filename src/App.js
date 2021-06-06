@@ -1,7 +1,23 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { nameActions } from './actions/nameActions';
+
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const state = useSelector(state => state);
+  const name = useSelector(state => state.name);
+
+  const dispatch = useDispatch();
+
+  console.log('state', state);
+  console.log('name', name);
+
+  useEffect(() => dispatch(nameActions.ericAction));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -15,7 +31,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React { name }
         </a>
       </header>
     </div>
